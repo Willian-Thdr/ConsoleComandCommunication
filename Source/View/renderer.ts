@@ -1,33 +1,58 @@
-/**
- * This file will automatically be loaded by vite and run in the "renderer" context.
- * To learn more about the differences between the "main" and the "renderer" context in
- * Electron, visit:
- *
- * https://electronjs.org/docs/tutorial/process-model
- *
- * By default, Node.js integration in this file is disabled. When enabling Node.js integration
- * in a renderer process, please be aware of potential security implications. You can read
- * more about security risks here:
- *
- * https://electronjs.org/docs/tutorial/security
- *
- * To enable Node.js integration in this file, open up `main.ts` and enable the `nodeIntegration`
- * flag:
- *
- * ```
- *  // Create the browser window.
- *  mainWindow = new BrowserWindow({
- *    width: 800,
- *    height: 600,
- *    webPreferences: {
- *      nodeIntegration: true
- *    }
- *  });
- * ```
- */
+import "../Style/index.css";
 
-import '../Styles/index.css';
+const title = document.getElementById("startTitle");
+const nameEntry = document.getElementById("nameEntry") as HTMLTextAreaElement;
 
-console.log(
-  '👋 This message is being logged by "renderer.ts", included via Vite',
-);
+setInterval(() => {
+    if (!filterSpaces(nameEntry.value)) {
+        title.textContent = "Welcome..."
+    } else {
+        title.textContent = `Welcome ${nameEntry.value}`;
+    }
+
+    textAdjust();
+});
+
+nameEntry.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.ctrlKey && event.key === "Enter") {
+        event.preventDefault();
+        nameEntry.value += "\n";
+        console.log(nameEntry.value);
+    } 
+    else if (event.key === "Enter") {
+        event.preventDefault();
+        nameEntry.blur();
+    }
+});
+
+
+// Métodos
+function filterSpaces(text: string) : boolean {
+    return text.trim().length > 0;
+};
+
+function getTextLength(text: string) : number {
+    return text.length;
+};
+
+function textAdjust() {
+    if (nameEntry) {
+        nameEntry.addEventListener("input", () => {
+            nameEntry.style.width = "150px";
+            nameEntry.style.whiteSpace = "nowrap";
+
+            const cWidth = nameEntry.scrollWidth;
+
+            nameEntry.style.width = `${cWidth}px`
+
+            if (cWidth >= 300) {
+                nameEntry.style.width = `${300}px`;
+                nameEntry.style.whiteSpace = "pre-wrap";
+                nameEntry.style.overflowX = "auto"
+            } else {
+                nameEntry.style.width = `${Math.max(150, cWidth)}px`;
+                nameEntry.style.overflowY = "hidden";
+            }
+        });
+    };
+}
