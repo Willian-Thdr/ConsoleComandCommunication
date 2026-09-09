@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  background-color: #000000;
 }
 
 .mainWindow {
@@ -21,6 +22,7 @@ body {
   font-size: 22pt;
   font-family: monospace;
   margin: 0px;
+  color: white;
 }
 
 #nameEntry {
@@ -36,4 +38,6 @@ body {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
+  color: white;
+  background: #707070FF;
 }
