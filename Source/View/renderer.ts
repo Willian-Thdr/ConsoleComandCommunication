@@ -2,6 +2,8 @@ import "../Style/index.css";
 
 const title = document.getElementById("startTitle");
 const nameEntry = document.getElementById("nameEntry") as HTMLTextAreaElement;
+const buttonConsole = document.getElementById("OpenConsoleCommand") as HTMLButtonElement;
+const buttonMessage = document.getElementById("OpenConsoleMessage") as HTMLButtonElement;
 
 setInterval(() => {
     if (!filterSpaces(nameEntry.value)) {
@@ -23,6 +25,15 @@ nameEntry.addEventListener("keydown", (event: KeyboardEvent) => {
         event.preventDefault();
         nameEntry.blur();
     }
+});
+
+buttonConsole.addEventListener("click", () => {
+    console.log("Console");
+});
+
+
+buttonMessage.addEventListener("click", () => {
+    console.log("Message");
 });
 
 
