@@ -1,15 +1,15 @@
 body {
   margin: 0px;
   background-color: #000000;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .mainWindow {
   position: relative;
-  top: 10px;
-  left: 0px;
-  margin: 0px;
-  width: 800px;
-  height: 300px;
+  margin: 10px 0px 0px;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -22,7 +22,7 @@ body {
   font-size: 22pt;
   font-family: monospace;
   margin: 0px;
-  color: white;
+  color: #d4a281;
 }
 
 #nameEntry {
@@ -38,6 +38,22 @@ body {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  color: white;
-  background: #707070FF;
+  color: #d4a281;
+  background: #4e4e4e;
+}
+
+#OpenConsoleCommand {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  background: #4e4e4e;
+  color: #d4a281;
+}
+
+#OpenConsoleMessage{
+  position: absolute;
+  top: 150px;
+  right: 50px;
+  background: #4e4e4e;
+  color: #d4a281;
 }
