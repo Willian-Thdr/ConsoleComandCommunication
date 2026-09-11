@@ -11,10 +11,18 @@ const server = http.createServer((req, res) => {
 
     if (req.url === "/") {
         filePath = path.join(sourcePath, "view", "index.html");
+    } 
+
+    else if (req.url === "/communicate") {
+        filePath = path.join(sourcePath, "view", "CommunicateWindow.html")
     }
 
     else if (req.url === "/style/index.css") {
         filePath = path.join(sourcePath, "style", "index.css");
+    }
+
+    else if (req.url === "/style/ComStyle.css") {
+      filePath = path.join(sourcePath, "style", "ComStyle.css");
     }
 
     else if (req.url === "/renderer.js") {

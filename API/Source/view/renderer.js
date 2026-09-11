@@ -30,7 +30,7 @@ buttonConsole.addEventListener("click", () => {
 });
 
 buttonMessage.addEventListener("click", () => {
-    console.log("Message");
+    window.open("/communicate");
 });
 
 

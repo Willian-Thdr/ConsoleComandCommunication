@@ -1,0 +1,14 @@
+#mainBox{
+  position: static;
+  align-items: center;
+  justify-content: center;
+  left: 0px;
+  top: 0px;
+  width: 400px;
+  height: 150px;
+}
+
+#Title {
+  position: relative;
+  left: 0px;
+}
