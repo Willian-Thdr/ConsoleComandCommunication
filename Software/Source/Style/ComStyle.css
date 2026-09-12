@@ -1,5 +1,16 @@
+body {
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 665px;
+  height: 411px;
+  background: black;
+  border: 1px solid #afafaf;
+}
+
 #mainBox{
   position: static;
+  display: flex;
   align-items: center;
   justify-content: center;
   left: 0px;
@@ -10,5 +21,21 @@
 
 #Title {
   position: relative;
-  left: 0px;
+  top: -55px;
+  font-size: 16pt;
+  font-family: monospace;
+  color: #b99c70;
+}
+
+#Exit {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  border: 1px solid #afafaf;
+  background: transparent;
+  color: #a32121;
+}
+
+#MessageEntry {
+  position: absolute;
 }
