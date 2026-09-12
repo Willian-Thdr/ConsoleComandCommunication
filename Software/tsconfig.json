@@ -11,5 +11,10 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "Source/**/*.ts",
+    "Source/**/*.tsx",
+    "Source/**/*.d.ts"
+  ]
 }
