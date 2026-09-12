@@ -3,8 +3,9 @@ const { app, BrowserWindow, ipcMain} = require('electron');
 ipcMain.on('open-MessageWindow', () => {
     console.log("open message window");
     const window = new BrowserWindow({
-        width: 400,
-        height: 300
+        width: 665,
+        height: 411,
+        useContentSize: true
     });
 
     console.log("load window elements");
