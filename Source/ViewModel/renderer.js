@@ -1,11 +1,8 @@
-import '../style/index.css';
-
 const title = document.getElementById("startTitle");
 const nameEntry = document.getElementById("nameEntry");
-const buttonConsole = document.getElementById("OpenConsoleCommand");
 const buttonMessage = document.getElementById("OpenConsoleMessage");
 
-export let textName = "null";
+let textName = "null";
 
 setInterval(() => {
     if (!filterSpaces(nameEntry.value)) {
@@ -28,10 +25,6 @@ nameEntry.addEventListener("keydown", (event) => {
         event.preventDefault();
         nameEntry.blur();
     }
-});
-
-buttonMessage.addEventListener("click", () => {
-    window.electronAPI.openMessageWindow();
 });
 
 // Métodos
@@ -64,3 +57,20 @@ function textAdjust() {
         });
     }
 }
+
+// frontend to server
+window.addEventListener("error", (event) => {
+    fetch("/api/client-error", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            message: event.message,
+            filename: event.filename,
+            line: event.lineno,
+            column: event.colno,
+            stack: event.error?.stack
+        })
+    });
+});
