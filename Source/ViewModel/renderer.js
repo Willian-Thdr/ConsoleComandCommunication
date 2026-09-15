@@ -7,9 +7,6 @@ let textName = "null";
 setInterval(() => {
     if (!filterSpaces(nameEntry.value)) {
         title.textContent = "Welcome...";
-    } else {
-        textName = nameEntry.value;
-        title.textContent = `Welcome ${textName}`;
     }
 
     textAdjust();
@@ -23,6 +20,9 @@ nameEntry.addEventListener("keydown", (event) => {
     } 
     else if (event.key === "Enter") {
         event.preventDefault();
+        textName = nameEntry.value;
+        title.textContent = `Welcome ${textName}`;
+        setName();
         nameEntry.blur();
     }
 });
@@ -63,7 +63,7 @@ window.addEventListener("error", (event) => {
     fetch("/api/client-error", {
         method: "POST",
         headers: {
-            "content-type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             message: event.message,
@@ -74,3 +74,15 @@ window.addEventListener("error", (event) => {
         })
     });
 });
+
+function setName() {
+    fetch("/api/user-infos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: textName
+        })
+    });
+}

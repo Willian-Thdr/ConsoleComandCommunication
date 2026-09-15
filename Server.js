@@ -5,6 +5,8 @@ const app = express();
 
 const PORT = 3000;
 
+let jsonData = {};
+
 app.get("/", (req, res) => {
     res.sendFile(
         path.join(__dirname, "Source", "view", "index.html")
@@ -12,7 +14,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, "Source")));
-
 app.use(express.json());
 
 app.post("/api/client-error", (req, res) => {
@@ -21,6 +22,18 @@ app.post("/api/client-error", (req, res) => {
 
     res.sendStatus(204);
 });
+
+app.post("/api/user-infos", (req, res) => {
+    jsonData = req.body;
+
+    res.json(jsonData);
+});
+
+app.get("/api/user-infos", (req, res) => {
+    res.json(jsonData);
+});
+
+app.set("json spaces", 4);
 
 app.listen(PORT, () => {
     console.log(`Server: http://localhost:${PORT}`);
